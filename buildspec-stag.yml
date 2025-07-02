@@ -30,7 +30,8 @@ phases:
       - cd "$CODEBUILD_SRC_DIR/terraform-manifests"
       - ls -lrt "$CODEBUILD_SRC_DIR/terraform-manifests"
       - terraform --version
-      - terraform init -input=false --backend-config=stag.conf
+      - rm -rf .terraform
+      - terraform init -upgrade -input=false --backend-config=stag.conf
       - terraform validate
       - terraform plan -lock=false -input=false -var-file=stag.tfvars           
       - terraform $TF_COMMAND -input=false -var-file=stag.tfvars -auto-approve  
