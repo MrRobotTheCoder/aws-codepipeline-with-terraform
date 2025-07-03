@@ -2,9 +2,11 @@
 resource "aws_autoscaling_group" "my_asg" {
   #name_prefix = "myasg-"
   name_prefix = "${local.name}-"
-  desired_capacity = 2
+  #desired_capacity = 2
+  desired_capacity = 4
   max_size = 10
-  min_size = 2
+  #min_size = 2
+  min_size = 4
   vpc_zone_identifier = module.vpc.private_subnets
   
   # Change-1: ALB Module upgraded to 9.4.0 
